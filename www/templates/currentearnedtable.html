@@ -1,0 +1,38 @@
+<ion-view view-title="জমার বিবরণ" cache-view="false">
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+        <div class="">
+            <button class="button button-icon button-clear ion-gear-b" ng-click="showButtonSettings()"></button>
+        </div>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+            <!-- <div ng-repeat="date in allCurrentData | unique: 'created_at'">
+                <p>{{ date.created_at }}</p>
+                <ol>
+                    <li ng-repeat="dataItem in allCurrentData | filter : {created_at: date.created_at}">
+                        <div>{{ dataItem.amount }}</div>
+                    </li>
+                </ol>
+            </div> -->
+        <ion-list style="" show-delete="showButtons">
+        <div ng-repeat="(date, amounts) in allCurrentData | groupBy: 'created_at'">
+            <div class="item item-divider">{{ date | date : "MMMM dd, y" }}</div>
+            <ion-item ng-repeat="item in amounts">
+                <ion-delete-button class="icon ion-trash-a delete-button" ng-click="showDltEarnActnsht(item)"></ion-delete-button>
+                <ion-delete-button class="icon ion-compose edit-button" ng-click="showEditEarn(item)"></ion-delete-button>
+                {{ item.reason }}
+                <span style="float: right;">৳ {{ item.amount }}</span>
+            </ion-item>
+        </div>
+        </ion-list>
+        <p style="height: 40px !important;"></p>
+    </ion-content>
+    <div class="bar bar-footer bar-assertive">
+        <div class="title"><span style="float: left;">Total:</span><span style="float: right;">৳ {{ totalCurrent }}</span></div>
+    </div>
+</ion-view>

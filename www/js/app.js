@@ -4,9 +4,11 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+var database = "accountant.db";
+var db = null;
+var accountant = angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'angular.filter'])
 
-.run(function($ionicPlatform) {
+accountant.run(function($ionicPlatform, $cordovaSQLite) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +21,9 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    db = window.openDatabase(database, '1.0', 'sqlitedemo', 2000);
+    $cordovaSQLite.execute(db, "CREATE TABLE expendings(id integer primary key, reason text, amount real, created_at text)");
+    $cordovaSQLite.execute(db, "CREATE TABLE earnings(id integer primary key, reason text, amount real, created_at text)");
   });
 })
 
@@ -41,33 +46,59 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+  .state('app.currentexpent', {
+    url: '/currentexpent',
+    cache: false,
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/currentexpenttable.html',
+        controller: 'CurrentExpendCtrl'
       }
     }
-  });
+  })
+
+  .state('app.currentearned', {
+    url: '/currentearned',
+    cache: false,
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/currentearnedtable.html',
+        controller: 'CurrentEarnedCtrl'
+      }
+    }
+  })
+
+  .state('app.monthly', {
+    url: '/monthly',
+    cache: false,
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/monthly.html',
+        controller: 'MonthlyCtrl'
+      }
+    }
+  })
+  
+  .state('app.welcome', {
+    url: '/welcome',
+    cache: false,
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/welcome.html',
+        controller: 'WelcomeCtrl'
+      }
+    }
+  })
+
+  // .state('app.single', {
+  //   url: '/playlists/:playlistId',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/playlist.html',
+  //       controller: 'PlaylistCtrl'
+  //     }
+  //   }
+  // });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/welcome');
 });

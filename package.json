@@ -7,5 +7,21 @@
     "gulp-clean-css": "^3.7.0",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^3.1.0"
+  },
+  "dependencies": {
+    "cordova-android": "^7.0.0",
+    "cordova-plugin-splashscreen": "^5.0.1",
+    "cordova-sqlite-storage": "^2.2.0",
+    "ionic-plugin-keyboard": "^2.2.1"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-sqlite-storage": {},
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-splashscreen": {}
+    },
+    "platforms": [
+      "android"
+    ]
   }
 }

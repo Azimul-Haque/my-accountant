@@ -1,1 +1,75 @@
 /* Empty. Add your own CSS if you like */
+
+
+
+.home {
+    color: #006064;
+}
+.arrow-up {
+    color: #EF473A;
+}
+.arrow-down {
+    color: #387EF5;
+}
+.clipboard1 {
+    color: #EF473A;
+}
+.clipboard2 {
+    color: #33CD5F;
+}
+.stats-bars {
+    color: #FFC900;
+}
+.information {
+    color: #387EF5;
+}
+
+.delete-button, .edit-button{
+    background: none !important;
+    color: inherit;
+    border: none;
+    padding: 10px !important;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit !important;
+    box-shadow: none !important;
+ }
+ .edit-button {
+     color: #387EF5 !important;
+ }
+ .list-left-editing .item-left-editable .item-content, .item-left-editing.item-left-editable .item-content {
+   -webkit-transform: translate3d(80px, 0, 0) !important;
+   -moz-transform: translate3d(80px, 0, 0)  !important;
+   transform: translate3d(80px, 0, 0)!important;
+ }
+ .item-left-edit:nth-child(2){
+    left:40px !important;
+}
+
+.platform-android .action-sheet-cancel {
+    display: block !important;
+}
+
+
+/* 
+    loader css
+*/
+.loader {
+    border: 4px solid #f3f3f3 !important;
+    border-radius: 50%;
+    border-top: 4px solid #808080 !important;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

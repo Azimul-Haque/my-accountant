@@ -1,0 +1,25 @@
+<ion-modal-view cache-view="false">
+  <ion-header-bar class="bar-assertive">
+    <h1 class="title"><i class="icon ion-cash"></i> খরচ</h1>
+    <div class="buttons">
+      <button class="button button-icon button-clear ion-android-close" ng-click="closeExpend()"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="addExpend()">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">খরচের খাত</span>
+          <input type="text" ng-model="expendData.reason" placeholder="খরচের খাত" required>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">পরিমাণ (৳)</span>
+          <input type="number" ng-model="expendData.amount" placeholder="পরিমাণ (৳)" required>
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">দাখিল করুন</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

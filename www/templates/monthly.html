@@ -1,0 +1,15 @@
+<ion-view view-title="মাসিক হিসাব" cache-view="false">
+  <ion-content>
+    <ion-list>
+        <div ng-repeat="date in allCurrentDataEr | unique: 'month'">
+            <div class="item item-divider" ng-init="month = Date(date.month)">{{ month | date : "MMMM y" }}</div>
+            <div class="item">
+                <span style="float: left;">জমাঃ ৳ {{ date.earningsamounts }}</span>
+                <span style="float: right;" ng-repeat="dataItem in allCurrentDataEx | filter : {month: date.month}">
+                    খরচঃ ৳ {{ dataItem.expendingsamounts }}</span>
+            </div>
+        </div>
+    </ion-list>
+    <p style="height: 40px !important;"></p>
+  </ion-content>
+</ion-view>
