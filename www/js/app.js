@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 var database = "accountant.db";
 var db = null;
-var accountant = angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'angular.filter'])
+var accountant = angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'angular.filter']);
 
 accountant.run(function($ionicPlatform, $cordovaSQLite) {
   $ionicPlatform.ready(function() {
